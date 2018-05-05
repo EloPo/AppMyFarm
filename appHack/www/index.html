@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="mobileui/style.css">
+  <meta name="format-detection" content="telephone=no">
+  <meta charset="utf-8">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+  <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
+  <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
+  <title>Hackaton Expoinga</title>
+</head>
+
+<body class="padding green-50 has-header has-footer">
+  <div class="header green">
+    <div class="left">
+      <button class="icon ion-ios-camera" onclick="openTab('myTabFoto')"></button>
+    </div>
+    <h1 class="text-bold align-center">MyFarm</h1>
+    <div class="right">
+      <button class="icon ion-chatboxes" onclick="openTab('myTabMsg')"></button>
+    </div>
+  </div>
+
+
+  <div class="footer green shadow tab" id="myTabhome">
+    <button class="icon ion-ios-partlysunny" onclick="openTab('myTabTempo')">Tempo</button>
+    <button class="icon ion-map" onclick="openTab('myTabMapa')">Mapa</button>
+    <button class="icon ion-ios-paper-outline" onclick="openTab('myTabPerfil')">Informações</button>
+    <button class="icon ion-arrow-graph-up-right" onclick="openTab('myTabGrafico')">Relatório</button>
+  </div>
+
+  <div class="tab-content" id="myTabFoto">
+    <div class="space"></div>
+    <img src="img/trigo.jpg" class="align-center"></img>
+    <div class="space"></div>
+    <h2 class="align-center">RESULTADO</h2>
+    <div class="space"></div>
+    <div class="padding border-black shadow radius mark">
+      <p>Produto: Trigo.</p>
+    </div>
+    <div class="space"></div>
+    <div class="padding border-black shadow radius mark">
+      <p>Qualidade: Alta.</p>
+    </div>
+  </div>
+
+  <div class="tab-content" id="myTabMsg">
+    <div class="list padding grey-100">
+      <div class="item white mark border-green margin-button shadow">
+        <h2>
+          <strong>João</strong>
+        </h2>
+        <p class="text-grey">44 9999-9999</p>
+        <p class="text-green">Não lida.</p>
+      </div>
+      <div class="item white mark border-light-blue margin-button shadow">
+        <h2>
+          <strong>Jeraldo</strong>
+        </h2>
+        <p class="text-grey">44 8732-5655</p>
+        <p class="text-light-blue">Não lida.</p>
+      </div>
+      <div class="item white mark border-purple margin-button shadow">
+        <h2>
+          <strong>Sandra</strong>
+        </h2>
+        <p class="text-grey">44 8888-8888</p>
+        <p class="text-purple">Não lida.</p>
+      </div>
+      <div class="item white mark border-orange margin-button shadow">
+        <h2>
+          <strong>Taylor</strong>
+        </h2>
+        <p class="text-grey">44 7777-7777</p>
+        <p class="text-orange">Não lida.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-content" id="myTabTempo">
+    <div class="space"></div>
+    <H1 class="align-center text-strong	">06/05/2018 DOMINGO 15h</H1>
+    <div class="icon ion-calendar" onClick="openTab('calendario')"></div>
+    <div class="space"></div>
+    <H1 class="align-center">ENSOLARADO</H1>
+    <div class="icon ion-ios-sunny-outline icon-huge align-center"> 32°C</div>
+    <H1 class="align-center">CHUVA</H1>
+    <div class="icon ion-ios-rainy-outline icon-huge align-center"> 10%</div>
+    <div class="space"></div>
+    <div class="list">
+      <div class="item">
+        <div class="icon ion-ios-sunny-outline">32°C
+          <span class="text-small-strong red-100 radius padding">ENSOLARADO</span>
+        </div>
+        <span class="text-small-strong radius padding"> 10%</span>
+        <span class="text-small-strong blue-100 radius padding">CHUVA</span>
+        <span class="text-small-strong orange-100 radius padding">16h</span>
+      </div>
+      <div class="item">
+        <div class="icon ion-ios-sunny-outline">30°C
+          <span class="text-small-strong red-100 radius padding">ENSOLARADO</span>
+        </div>
+        <span class="text-small-strong radius padding"> 15%</span>
+        <span class="text-small-strong blue-100 radius padding">CHUVA</span>
+        <span class="text-small-strong orange-100 radius padding">17h</span>
+      </div>
+      <div class="item">
+        <div class="icon ion-ios-partlysunny-outline">27°C
+          <span class="text-small-strong red-100 radius padding">SOL COM NUVENS</span>
+        </div>
+        <span class="text-small-strong radius padding"> 20%</span>
+        <span class="text-small-strong blue-100 radius padding">CHUVA</span>
+        <span class="text-small-strong orange-100 radius padding">18h</span>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="tab-content" id="calendario">
+    <div class="space"></div>
+    <div class="space"></div>
+    <div class="space"></div>
+    <img class="align-center" src="img/calendario.png" width="400" height="200"></img>
+    <div class="space"></div>
+    <div class="icon ion-chevron-left" onClick="openTab('myTabTempo')">Voltar</div>
+
+  </div>
+
+  <div class="tab-content" id="myTabMapa">
+    <div class="space"></div>
+    <div id='map' style='width: 600px; height: 300px;'></div>
+    <script>
+      mapboxgl.accessToken = 'pk.eyJ1IjoiZWxvcG8iLCJhIjoiY2pndGI3ZjF3MDV5MjMzbzdxYWk0cWVrbCJ9.UcARbxpNS57ihF4mbR8Lfw';
+      var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v10'
+      });
+    </script>
+    <div class="space"></div>
+    <h1 class="text-strong">Área Total: 10.000 m2</h1>
+    <div class="space"></div>
+    <h1 class="text-strong">Área de Plantio: 8.000 m2</h1>
+    <div class="space"></div>
+    <h1 class="text-strong">Solo de Boa Qualidade: 6.000 m2</h1>
+    <div class="space"></div>
+    <h1 class="text-strong">Solo de Pouca Qualidade: 2.000 m2</h1>
+
+  </div>
+
+  <div class="tab-content" id="myTabPerfil">
+    <div class="space"></div>
+    <div class="space"></div>
+    <div class="space"></div>
+    <label>Operação: </label>
+    <div class="item text-small align-center">
+      <select>
+        <option>Entrada</option>
+        <option>Saída</option>
+      </select>
+    </div>
+    <div class="space"></div>
+    <label>Produto: </label>
+    <div class="item text-small align-center">
+      <select>
+        <option>Soja</option>
+        <option>Milho</option>
+        <option>Arroz</option>
+        <option>Feijão</option>
+        <option>Trigo</option>
+      </select>
+    </div>
+    <div class="space"></div>
+    <div class="list">
+      <div class="item label-fixed">
+        <label>Preço: </label>
+        <input>
+      </div>
+      <div class="item label-fixed">
+        <label>Quantidade: </label>
+        <input>
+      </div>
+    </div>
+    <div class="item">
+      <button class="blue radius full" onclick="alert('Salvo com sucesso!')">Salvar</button>
+    </div>
+  </div>
+  <div class="tab-content align-center" id="myTabGrafico">
+    <div class="space"></div>
+    <div class="space"></div>
+    <img src="img/relatorio.jpg" width="300" height="250">
+  </div>
+
+  <script type="text/javascript" src="mobileui/mobileui.js"></script>
+
+</body>
+
+</html>
